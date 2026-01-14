@@ -1,0 +1,134 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ========================================
+   Design System: Clean SaaS (Linear/Vercel style)
+   ======================================== */
+
+@layer base {
+  :root {
+    /* Background & Foreground */
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+
+    /* Primary - Professional Black/Dark */
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+
+    /* Secondary - Subtle gray */
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+
+    /* Muted - For less emphasis */
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    /* Accent - For hover states */
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+
+    /* Destructive - Red for errors/delete */
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    /* Border & Input */
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+
+    /* Card */
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+
+    /* Radius */
+    --radius: 0.5rem;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig"1, "calt"1;
+  }
+}
+
+/* ========================================
+   Component Utilities
+   ======================================== */
+
+@layer components {
+  .card {
+    @apply bg-card text-card-foreground rounded-md border border-border;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium transition-colors;
+  }
+
+  .btn:disabled {
+    @apply pointer-events-none opacity-50;
+  }
+
+  .btn-primary {
+    @apply btn bg-primary text-primary-foreground px-4 py-2;
+  }
+
+  .btn-primary:hover {
+    opacity: 0.9;
+  }
+
+  .btn-secondary {
+    @apply btn bg-secondary text-secondary-foreground px-4 py-2;
+  }
+
+  .btn-secondary:hover {
+    opacity: 0.8;
+  }
+
+  .btn-ghost {
+    @apply btn px-4 py-2;
+  }
+
+  .btn-ghost:hover {
+    @apply bg-accent text-accent-foreground;
+  }
+
+  .btn-destructive {
+    @apply btn bg-destructive text-destructive-foreground px-4 py-2;
+  }
+
+  .btn-destructive:hover {
+    opacity: 0.9;
+  }
+
+  .input {
+    @apply flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm;
+  }
+
+  .input::placeholder {
+    @apply text-muted-foreground;
+  }
+
+  .input:disabled {
+    @apply cursor-not-allowed opacity-50;
+  }
+
+  .input:focus {
+    @apply outline-none ring-2 ring-ring ring-offset-2;
+  }
+
+  .textarea {
+    @apply flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm;
+  }
+
+  .textarea::placeholder {
+    @apply text-muted-foreground;
+  }
+
+  .textarea:disabled {
+    @apply cursor-not-allowed opacity-50;
+  }
+
+  .textarea:focus {
+    @apply outline-none ring-2 ring-ring ring-offset-2;
+  }
+}
