@@ -108,15 +108,19 @@
     pending,
     error,
     refresh
-  } = await useAsyncData('prompts', async () => {
-    const { data, error } = await client
-      .from('prompts')
-      .select('*')
-      .order('created_at', { ascending: false })
+  } = await useAsyncData(
+    'prompts',
+    async () => {
+      const { data, error } = await client
+        .from('prompts')
+        .select('*')
+        .order('created_at', { ascending: false })
 
-    if (error) throw error
-    return data
-  })
+      if (error) throw error
+      return data
+    },
+    { server: false } // 只在客户端获取数据，避免 SSR 时 RLS 问题
+  )
 
   async function handleDelete(id: string) {
     if (!confirm('确定要删除这个 Prompt 吗？')) return

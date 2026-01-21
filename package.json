@@ -6,7 +6,7 @@
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
-    "preview": "nuxt preview",
+    "preview": "cross-env NITRO_HOST=localhost nuxt preview",
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^6.14.0",
+    "cross-env": "^10.1.0",
     "typescript": "^5.9.3"
   }
 }

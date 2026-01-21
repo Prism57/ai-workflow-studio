@@ -132,11 +132,20 @@
         return
       }
 
+      // 先获取会话，确保认证 token 被正确附加
+      const {
+        data: { session }
+      } = await client.auth.getSession()
+      if (!session) {
+        errorMsg.value = '会话已过期，请重新登录'
+        await navigateTo('/login')
+        return
+      }
+
       const { error } = await client.from('prompts').insert({
         name: form.name,
         content: form.content,
-        parameters,
-        user_id: user.value.id
+        parameters
       } as any)
 
       if (error) throw error

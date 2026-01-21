@@ -140,7 +140,8 @@
       const { error } = await client.auth.signInWithOAuth({
         provider: 'github',
         options: {
-          redirectTo: `${window.location.origin}/`
+          // 回调到服务端 API 路由处理授权码交换
+          redirectTo: `${window.location.origin}/api/auth/callback`
         }
       })
 

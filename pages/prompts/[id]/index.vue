@@ -98,7 +98,8 @@
 
       if (error) throw error
       return data as any
-    }
+    },
+    { server: false } // 只在客户端获取数据，避免 SSR 时 RLS 问题
   )
 
   const form = reactive({

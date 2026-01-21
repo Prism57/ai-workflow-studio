@@ -48,24 +48,26 @@
 
         <!-- User Menu -->
         <div class="flex items-center gap-2 sm:gap-3">
-          <div v-if="user" class="flex items-center gap-2 sm:gap-3">
-            <img
-              :src="user.user_metadata?.avatar_url || '/default-avatar.png'"
-              :alt="user.user_metadata?.name"
-              class="w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-border"
-            />
-            <span
-              class="hidden lg:block text-sm text-foreground truncate max-w-[120px]"
-            >
-              {{ user.user_metadata?.name || user.email }}
-            </span>
-            <button
-              @click="logout"
-              class="text-muted-foreground hover:text-foreground text-sm transition-colors"
-            >
-              退出
-            </button>
-          </div>
+          <ClientOnly>
+            <div v-if="user" class="flex items-center gap-2 sm:gap-3">
+              <img
+                :src="user.user_metadata?.avatar_url || '/default-avatar.png'"
+                :alt="user.user_metadata?.name"
+                class="w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-border"
+              />
+              <span
+                class="hidden lg:block text-sm text-foreground truncate max-w-[120px]"
+              >
+                {{ user.user_metadata?.name || user.email }}
+              </span>
+              <button
+                @click="logout"
+                class="text-muted-foreground hover:text-foreground text-sm transition-colors"
+              >
+                退出
+              </button>
+            </div>
+          </ClientOnly>
         </div>
       </div>
 
